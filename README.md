@@ -60,17 +60,16 @@ In flake:
             ]]
         );
         # generates a file "log4j2.xml" with the following contents:
+        #
         # <?xml version="1.0" encoding="UTF-8"?>
         # <Configuration status="warn">
         #     <Appenders>
-        #         <!-- Console appender configuration -->
         #         <Console name="console" target="SYSTEM_OUT">
         #             <PatternLayout
         #                 pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
         #         </Console>
         #     </Appenders>
         #     <Loggers>
-        #         <!-- Root logger referring to console appender -->
         #         <Root level="info" additivity="false">
         #             <AppenderRef ref="console" />
         #         </Root>
