@@ -1,6 +1,6 @@
-{ lib }:
+{ nixpkgsLib }:
 with builtins;
-with lib;
+with nixpkgsLib;
 {
   assertInline =
     fn: value:

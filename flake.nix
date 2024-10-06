@@ -17,11 +17,14 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+        functions = import ./functions.nix { nixpkgsLib = nixpkgs.lib; };
       in
       {
         devShells.default = pkgs.mkShell {
           buildInputs = [ pkgs.git ];
         };
+
+        xmlify = functions.xmlify;
       }
     );
 }
