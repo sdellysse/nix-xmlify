@@ -1,7 +1,7 @@
 { nixpkgsLib }:
 with builtins;
 with nixpkgsLib;
-{
+let
   assertInline =
     fn: value:
     assert (fn value);
@@ -104,4 +104,15 @@ with nixpkgsLib;
       (parseTag)
       (tagToXml)
     ];
+in
+{
+  inherit
+    assertInline
+    attrsToList
+    atIndex
+    atName
+    parseTag
+    tagToXml
+    xmlify
+    ;
 }

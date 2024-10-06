@@ -44,10 +44,13 @@ In flake:
         };
     };
 
-    outputs = {nixpkgs, nix-xmlify, ...}: {
+    outputs = {nixpkgs, nix-xmlify, ...}: let
+      system = "x86_64-linux";
+      xmlify = nix-xmlify.xmlify.${system};
+    in {
         # ...
 
-        services.log4j2.config = pkgs.writeTextFile "log4j2.xml" (nix-xmlify.xmlify 
+        services.log4j2.config = pkgs.writeTextFile "log4j2.xml" (xmlify 
             ["Configuration" { status = "warn"; } [
                 ["Appenders" { name = "console"; target = "SYSTEM_OUT"; } [
                     ["PatternLayout" { pattern = "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"; }]
